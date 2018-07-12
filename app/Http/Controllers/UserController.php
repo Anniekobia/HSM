@@ -33,9 +33,12 @@ class UserController extends Controller
             if ($user->position=="Admin"){
                 return 'success';
                 return view('adminusers')->with('user',$user);
-            }else{
-                return 'failed';
-                return view('welcome');
+            }elseif($user->position=="Doctor"){
+                return 'doctor';
+            }elseif ($user->position=="Nurse"){
+                return  'nurse';
+            }elseif ($user->position=="Receptionist"){
+                return 'receptionist';
             }
 //            $storedmethodresponse['status'] = 1;
 //            $storedmethodresponse['message'] = "Login success";
