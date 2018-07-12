@@ -32,7 +32,8 @@ class UserController extends Controller
                 $users=$this->selectAllUsers();
                 return view('adminusers')->with('users',$users);
             }elseif($user->position=="Doctor"){
-                return \Redirect::route('/showAppointments');
+                return Redirect::route('/showAppointments');
+             
             }elseif ($user->position=="Nurse"){
                 return  'nurse';
             }elseif ($user->position=="Receptionist"){
