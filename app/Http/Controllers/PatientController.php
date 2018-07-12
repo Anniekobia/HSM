@@ -10,11 +10,14 @@ class PatientController extends Controller
     public function showAppointments()
     {
         $today = now()->toDateString();
-        //return $today;
         $appointments = Patient::all();
+        $date=null;
+//        $appointments = Patient::where();
         foreach ($appointments as $dates) {
             $date=$dates->appointment;
-            return $date;
+        }
+        if ($date>=$today){
+            echo $date;
         }
 //        $appointmentdate=$appointments->appointment;
 //        return $appointmentdate;
