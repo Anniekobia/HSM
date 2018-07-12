@@ -32,6 +32,11 @@
             <label>Add new User</label>
             <button type="submit">ADD</button>
         </form>
-        <p><a href="/">Back</a></p>
+
+        <form id="addform" method="post" action="{{url('ad')}}">
+            {{ csrf_field() }}
+            <button><a href="adminhomepage">Logout</a></button>
+        </form>
+
     </body>
 </html>
