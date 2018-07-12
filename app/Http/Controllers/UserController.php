@@ -25,14 +25,16 @@ class UserController extends Controller
             $storemethodresponse['status'] = 3;
             $storemethodresponse['message'] = "Please fill in the required fields";
             return $storemethodresponse;
-        } elseif (!$user) {
+        } elseif (!$user||($user->password!=$request->password)) {
             $storemethodresponse['status'] = 2;
             $storemethodresponse['message'] = "Wrong username or password";
             return $storemethodresponse;
-        } else {
+        } elseif{
             if ($user->position="Admin"){
+                return 'success';
                 return view('adminusers')->with('user',$user);
             }else{
+                return 'failed';
                 return view('welcome');
             }
 //            $storedmethodresponse['status'] = 1;
