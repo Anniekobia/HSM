@@ -8,8 +8,9 @@ class PatientController extends Controller
 {
     public function showAppointments()
     {
-        return'success';
+        //return'success';
         $today = now();
+        return 'today';
         $appointments = Patient::where('appointments'>=$today);
         return $appointments;
 
