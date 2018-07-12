@@ -25,4 +25,4 @@ Route::get('/doctorhomepage', function () {
     return view('doctor');
 });
 Route::get('/allUsers',  'UserController@selectAllUsers');
-//Route::post('/login',  'UserController@loginUser');
+Route::post('/login',  'UserController@loginUser');

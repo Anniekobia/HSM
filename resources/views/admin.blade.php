@@ -28,6 +28,13 @@
     </style>
 </head>
 <body>
+<div>
+    <form method="post" action="{{url('/allUsers')}}">
+        {{ csrf_field() }}
+        <label>Click here to view all registerd users</label>
+        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">VIEW</button>
+    </form>
+</div>
 <div class="container">
     <div class="row main">
         <div class="panel-heading">

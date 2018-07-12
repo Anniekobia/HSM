@@ -30,10 +30,16 @@ class UserController extends Controller
             $storemethodresponse['message'] = "Wrong username or password";
             return $storemethodresponse;
         } else {
-            $storedmethodresponse['status'] = 1;
-            $storedmethodresponse['message'] = "Login success";
-            return view('welcome');
-            return $storedmethodresponse;
+            if ($user->position="Admin"){
+                return view('');
+                return view('adminusers')->with('user',$user);
+            }else{
+                return view('welcome');
+            }
+//            $storedmethodresponse['status'] = 1;
+//            $storedmethodresponse['message'] = "Login success";
+//            return view('welcome');
+//            return $storedmethodresponse;
         }
     }
 }
