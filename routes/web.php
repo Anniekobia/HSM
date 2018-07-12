@@ -34,3 +34,5 @@ Route::post('/deleteUser','UserController@deleteUser');
 Route::post('/addUser',  'UserController@addUser');
 
 Route::get('/showAppointments',  'PatientController@showAppointments');
+Route::post('/logout', 'UserController@logout' );
+Route::post('/change_password', 'UserController@changePassword' );

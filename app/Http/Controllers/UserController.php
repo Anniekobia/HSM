@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PatientController;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
@@ -24,49 +25,87 @@ class UserController extends Controller
             'password' => 'required',
         ]);
         $user = User::where('email', $request->email)->first();
-        if (!$user||($user->password!=$request->password)) {
-            $msg = 'Wrong username or password';
-            return view('loginresponce')->with('msg',$msg);
-        } else{
-            if ($user->position=="Admin"){
-                $users=$this->selectAllUsers();
-                return view('adminusers')->with('users',$users);
-            }elseif($user->position=="Doctor"){
-                return redirect()->action('PatientController@showAppointments');
-            }elseif ($user->position=="Nurse"){
-                return  'nurse';
-            }elseif ($user->position=="Receptionist"){
-                return 'receptionist';
+
+        //check if user exists
+        if ($user) {
+            //check if password matches
+            if (!Hash::check($request->password, $user->password)) {
+                $msg = 'Invalid login';
+                return view('login')->withErrors($msg);
             }
+
+            if ($user->position == "admin") {
+                $users = $this->selectAllUsers();
+                return view('adminusers')->with('users', $users);
+            } else {
+                if ($user->status == 0) {
+                    $request->session()->put('user', $user->email);
+                    return view('change_password');
+                } else if ($user->status == 1) {
+                    //check role
+                    if($user->position == "doctor"){
+                        return "doctor";
+                    }else if($user->position == "nurse"){
+                        return "nurse";
+                    }
+
+                }
+            }
+
         }
     }
-    public function deleteUser(Request $request){
-        $id=$request->input('action');
-        $user = User::findOrFail($id);
-        $user->delete();
-        $users=$this->selectAllUsers();
-        return view('adminusers')->with('users',$users);
-    }
-    public function addUser(Request $request){
-//        $request->validate([
+
+    public function changePassword(Request $request)
+    {
+//        $isinputValid = $request->validate([
 //            'name' => 'required',
-//            'email' => 'required',
-//            'password' => 'required',
-//            'position' => 'required',
-//            'status' => 'required',
+//            'password' =>'required|confirmed',
 //        ]);
-        $user=new User;
-        $user->name=$request->name;
-        $user->email=$request->email;
-        $user->password=$request->password;
-        $user->position=$request->position;
-        $user->status=$request->status;
-        $user->created_at= now();
-        $user->updated_at = now();
+//        if(!$isinputValid){
+//            return "Beatrice";
+//        }
+        $user = User::where('email', $request->email)->first();
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->status = 1;
         $user->save();
-        $users=$this->selectAllUsers();
-        return view('adminusers')->with('users',$users);
+        return view('login');
 
     }
+
+    public function deleteUser(Request $request)
+    {
+        $id = $request->input('action');
+        $user = User::findOrFail($id);
+        $user->delete();
+        $users = $this->selectAllUsers();
+        return view('adminusers')->with('users', $users);
+    }
+
+    public function addUser(Request $request)
+    {
+//        request()->validate([
+//            'name' => 'required'
+//        ]);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt(123456);
+        $user->position = $request->position;
+        $user->status = 0;
+        $user->save();
+
+        $users = User::all();
+
+        return view('adminusers')->with('users', $users);
+    }
+
+    public function logout()
+    {
+        return view('login');
+    }
+
+
 
 }

@@ -37,15 +37,15 @@
                 <hr />
             </div>
         </div>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        {{--@if ($errors->any())--}}
+            {{--<div class="alert alert-danger">--}}
+                {{--<ul>--}}
+                    {{--@foreach ($errors->all() as $error)--}}
+                        {{--<li>{{ $error }}</li>--}}
+                    {{--@endforeach--}}
+                {{--</ul>--}}
+            {{--</div>--}}
+        {{--@endif--}}
         <div class="main-login main-center">
             <form class="form-horizontal" method="post" action="{{url('/addUser')}}">
                 {{ csrf_field() }}
@@ -70,16 +70,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="password" class="cols-sm-2 control-label">Default Password</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" name="password" placeholder="******"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label for="position" class="cols-sm-2 control-label">Position</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
@@ -89,18 +79,8 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="status" class="cols-sm-2 control-label">Status</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="number" class="form-control" name="status"  placeholder="e.g 0"/>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="form-group ">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button" >Register</button>
                 </div>
             </form>
         </div>
