@@ -15,10 +15,11 @@ class PatientController extends Controller
 //        $appointments = Patient::where();
         foreach ($appointments as $dates) {
             $date=$dates->appointment;
+            if ($date>=$today){
+                echo $date;
+            }
         }
-        if ($date>=$today){
-            echo $date;
-        }
+
 //        $appointmentdate=$appointments->appointment;
 //        return $appointmentdate;
 
