@@ -22,28 +22,24 @@
 
     </head>
     <body>
-    <?php
-        echo $users;
-    ?>
+    @foreach($user as $userdata)
         <table>
         <tr>
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Password</th>
             <th>Position</th>
             <th>Status</th>
-            <th>Created</th>
-            <th>Latest update</th>
         </tr>
         <tr>
-        <td>{{$specific->id}}</td>
-        <td>{{$specific->student_number}}</td>
-        <td>{{$specific->date_of_payment}}</td>
-        <td>{{$specific->amount}}</td>
+            <td>{{$userdata->id}}</td>
+            <td>{{$userdata->name}}</td>
+            <td>{{$userdata->email}}</td>
+            <td>{{$userdata->position}}</td>
+            <td>{{$userdata->status}}</td>
         </tr>
         </table>
-        @endif
-        <p><a href="/adminhomepage">Back</a></p>
+    @endforeach
+    <p><a href="/adminhomepage">Back</a></p>
     </body>
 </html>
