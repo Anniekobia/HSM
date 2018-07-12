@@ -16,7 +16,7 @@ class PatientController extends Controller
         foreach ($appointments as $dates) {
             $date=$dates->appointment;
             if ($date>=$today){
-                echo $date;
+                echo $dates;
             }
         }
 
