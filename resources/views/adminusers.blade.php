@@ -22,7 +22,7 @@
 
     </head>
     <body>
-    @foreach($user as $userdata)
+    @foreach($users as $userdata)
         <table>
         <tr>
             <th>Id</th>
