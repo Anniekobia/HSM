@@ -33,9 +33,9 @@
             <button type="submit">ADD</button>
         </form>
 
-        <form id="addform" method="post" action="{{url('ad')}}">
+        <form id="addform" method="post" action="{{url('/')}}">
             {{ csrf_field() }}
-            <button><a href="adminhomepage">Logout</a></button>
+            <button><a href="/">Logout</a></button>
         </form>
 
     </body>

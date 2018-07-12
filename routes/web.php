@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get('/doctorhomepage', function () {
     return view('doctor');
 });
-Route::post('adminhomepage', function () {
+Route::post('/adminhomepage', function () {
     return view('adminusers');
 });
 Route::post('/register', function () {
@@ -34,3 +34,7 @@ Route::post('/deleteUser','UserController@deleteUser');
 Route::post('/addUser',  'UserController@addUser');
 
 Route::get('/showAppointments',  'PatientController@showAppointments');
+Route::post('/patientTreatment',  'PatientController@patientTreatment');
+Route::post('/searchPatient',  'PatientController@searchPatient');
+Route::post('/editPatient',  'PatientController@editPatient');
+Route::post('/postPatientEdit',  'PatientController@postPatientEdit');
