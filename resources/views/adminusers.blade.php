@@ -15,7 +15,8 @@
     {{--</table>--}}
 {{--@endif--}}
 {{--<p><a href="/adminhomepage">Back</a></p>--}}
-<!DOCTYPE html>
+        <!DOCTYPE html>
+<html lang="en">
 <html>
     <head>
 
