@@ -42,4 +42,9 @@ Route::post('/patientTreatment',  'PatientController@patientTreatment');
 Route::post('/searchPatient',  'PatientController@searchPatient');
 Route::post('/editPatient',  'PatientController@editPatient');
 Route::post('/postPatientEdit',  'PatientController@postPatientEdit');
+<<<<<<< HEAD
 >>>>>>> 5a0295ed2c9b9039c2cabfc524edc1a6327a6562
+=======
+Route::get('/showAllAppointments',  'PatientController@showAllAppointments');
+Route::post('/addPatient',  'PatientController@addPatient');
+>>>>>>> 235a8b5151aa005a772585cc41a0312ad0f4d49f

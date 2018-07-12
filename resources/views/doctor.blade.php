@@ -36,13 +36,6 @@
                     </tbody>
                 @endforeach
             </table>
-        {{--<form id="addform" method="post" action="{{url('/patientTreatment')}}">--}}
-            {{--{{ csrf_field() }}--}}
-            {{--<label>Record Patient Treatment</label>--}}
-            {{--<button type="submit">ADD</button>--}}
-        {{--</form>--}}
-        {{--<h5>Patient Treatment:</h5>--}}
-            {{--<a href="AddPatient.php"><button type="button" class="btn btn-primary">Add Treatment</button></a>--}}
             <h5>Search Patient History:</h5>
                 <form class="form-inline" method="post" action="{{url('/searchPatient')}}">
                     {{ csrf_field() }}

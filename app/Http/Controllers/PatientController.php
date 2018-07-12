@@ -21,6 +21,20 @@ class PatientController extends Controller
         }
         return view('doctor')->with('array',$array);
     }
+    public function showAllAppointments()
+    {
+        $today = now()->toDateString();
+        $appointments = Patient::all();
+        $date=null;
+        $array=[];
+        foreach ($appointments as $dates) {
+            $date=$dates->appointment;
+            if ($date>=$today){
+                array_push($array,$dates);
+            }
+        }
+        return view('receiptionist')->with('array',$array);
+    }
      public function editPatient(Request $request){
          $id=$request->input('action');
          $patient=Patient::where('id',$id)->first();
@@ -40,5 +54,17 @@ class PatientController extends Controller
         $patient->appointment=$request->appointment;
         $patient->update();$patient->save();
         return view('patientsearch')->with('patient',$patient);
+    }
+    public function addPatient(Request $request){
+        $patient = new Patient;
+        $patient->name=$request->name;
+        $patient->age=$request->age;
+        $patient->gender=$request->gender;
+        $patient->symptoms=$request->symptoms;
+        $patient->temperature=$request->temperature;
+        $patient->blood_pressure=$request->blood_pressure;
+        $patient->allergies=$request->allergies;
+        $patient->save();
+        return view(patientadded)->with('msg','Patient Successfully added');
     }
 }

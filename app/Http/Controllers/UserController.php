@@ -26,6 +26,7 @@ class UserController extends Controller
         ]);
         $user = User::where('email', $request->email)->first();
 
+
         //check if user exists
         if ($user) {
             //check if password matches
