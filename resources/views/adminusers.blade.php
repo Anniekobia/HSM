@@ -23,7 +23,7 @@
     </head>
     <body>
     <?php
-        echo $user;
+        echo $users;
     ?>
     </body>
 </html>
