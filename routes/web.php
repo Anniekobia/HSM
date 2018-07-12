@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/loginform', function () {
     return view('login');
 });
+
+//Route::get('/loginform', function () {
+//    return view('login');
+//});
 Route::get('/doctorhomepage', function () {
     return view('doctor');
 });
