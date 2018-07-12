@@ -13,7 +13,7 @@ class PatientController extends Controller
         //return $today;
         $appointments = Patient::all();
         $appointmentdate=$appointments->appointment;
-        return $appointmentdate;
+        return $appointments;
 
     }
 }
