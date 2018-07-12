@@ -22,24 +22,24 @@
 
     </head>
     <body>
-    @foreach($users as $userdata)
         <table>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Position</th>
-            <th>Status</th>
-        </tr>
-        <tr>
-            <td>{{$userdata->id}}</td>
-            <td>{{$userdata->name}}</td>
-            <td>{{$userdata->email}}</td>
-            <td>{{$userdata->position}}</td>
-            <td>{{$userdata->status}}</td>
-        </tr>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Position</th>
+                <th>Status</th>
+            </tr>
+                @foreach($users as $userdata)
+                    <tr>
+                        <td>{{$userdata->id}}</td>
+                        <td>{{$userdata->name}}</td>
+                        <td>{{$userdata->email}}</td>
+                        <td>{{$userdata->position}}</td>
+                        <td>{{$userdata->status}}</td>
+                    </tr>
+            @endforeach
         </table>
-    @endforeach
-    <p><a href="/adminhomepage">Back</a></p>
+        <p><a href="/adminhomepage">Back</a></p>
     </body>
 </html>
