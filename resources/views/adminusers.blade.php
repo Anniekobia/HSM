@@ -25,5 +25,25 @@
     <?php
         echo $users;
     ?>
+        <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Position</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Latest update</th>
+        </tr>
+        <tr>
+        <td>{{$specific->id}}</td>
+        <td>{{$specific->student_number}}</td>
+        <td>{{$specific->date_of_payment}}</td>
+        <td>{{$specific->amount}}</td>
+        </tr>
+        </table>
+        @endif
+        <p><a href="/adminhomepage">Back</a></p>
     </body>
 </html>

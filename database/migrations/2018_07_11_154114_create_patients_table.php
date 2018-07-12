@@ -23,7 +23,6 @@ class CreatePatientsTable extends Migration
             $table->string('blood_pressure');
             $table->string('allergies');
             $table->date('appointment');
-            $table->timestamps();
         });
     }
 
