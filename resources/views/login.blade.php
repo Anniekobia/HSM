@@ -38,8 +38,24 @@
             <div style="padding-top:30px" class="panel-body" >
 
                 <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                {{--@if ($msg)--}}
+                    {{--<div class="alert alert-danger">--}}
+                        {{--<ul>--}}
+                            {{--<li>{{ $msg }}</li>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+                {{--@endif--}}
 
-                <form method="post" id="loginform" class="form-horizontal" action="{{url('/login')}}">
+                <form method="post" id="loginform" class="form-horizontal" action="{{url('login')}}">
                     {{ csrf_field() }}
 
                     <div style="margin-bottom: 25px" class="input-group">
@@ -55,7 +71,7 @@
                         <!-- Button -->
 
                         <div class="col-sm-12 controls">
-                            <a id="btn-login" href="#" class="btn btn-success" type="submit">Login </a>
+                            <button id="btn-login" class="btn btn-success" type="submit" name="Login">Login</button>
                         </div>
                     </div>
                 </form>

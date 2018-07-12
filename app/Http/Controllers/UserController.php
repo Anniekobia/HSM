@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -15,23 +16,22 @@ class UserController extends Controller
 
     public function loginUser(Request $request)
     {
+
         $request->validate([
-            'email' => 'required:users,email',
-            'password' => 'required:users,password',
+            'email' => 'required',
+            'password' => 'required',
         ]);
-        $storemethodresponse = array();
-        $user = User::where('email', $request->email)->first();
-        if ($request->email == null || $request->password == null) {
-            $storemethodresponse['status'] = 3;
-            $storemethodresponse['message'] = "Please fill in the required fields";
-            return $storemethodresponse;
-        } elseif (!$user||($user->password!=$request->password)) {
-            $storemethodresponse['status'] = 2;
-            $storemethodresponse['message'] = "Wrong username or password";
-            return $storemethodresponse;
+//        $user = User::where('email', $request->email)->first();
+        $user= User::
+        return $user;
+        if (!$user||($user->password!=$request->password)) {
+            $msg = 'Wrong username or password';
+            //return 'here';
+            return view('login')->with('msg',$msg);
         } else{
             if ($user->position=="Admin"){
                 $users=$this->selectAllUsers();
+//                return 'here';
                 return view('adminusers')->with('users',$users);
             }elseif($user->position=="Doctor"){
                 return 'doctor';
