@@ -10,7 +10,7 @@ class PatientController extends Controller
     {
         //return'success';
         $today = now()->toDateString();
-        return $today;
+        //return $today;
         $appointments = Patient::where('appointments'>=$today);
         return $appointments;
     }
