@@ -18,6 +18,9 @@ Route::get('/', function () {
 //Route::get('/loginform', function () {
 //    return view('login');
 //});
+Route::get('/adminhomepage', function () {
+    return view('admin');
+});
 Route::get('/doctorhomepage', function () {
     return view('doctor');
 });
