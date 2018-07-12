@@ -11,7 +11,9 @@ class PatientController extends Controller
     {
         $today = now()->toDateString();
         //return $today;
-        $appointments = Patient::where('appointments','>=',$today);
-        return $appointments->toJson();
+        $appointments = Patient::all();
+        $appointmentdate=$appointments->appointment;
+        return $appointmentdate;
+
     }
 }
