@@ -13,6 +13,5 @@ class PatientController extends Controller
         return $today;
         $appointments = Patient::where('appointments'>=$today);
         return $appointments;
-
     }
 }
