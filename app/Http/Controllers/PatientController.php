@@ -12,7 +12,7 @@ class PatientController extends Controller
         $today = now()->toDateString();
         //return $today;
         $appointments = Patient::all();
-        $appointmentdate=$appointments->appointment;
+       // $appointmentdate=$appointments->appointment;
         return $appointments;
 
     }
