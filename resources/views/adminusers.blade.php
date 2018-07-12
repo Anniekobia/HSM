@@ -1,35 +1,20 @@
-{{--@if($total==null AND $specific!=null)--}}
-    {{--<table>--}}
-        {{--<tr>--}}
-            {{--<th>Record Id</th>--}}
-            {{--<th>Student Number</th>--}}
-            {{--<th>Date of Payment</th>--}}
-            {{--<th>Amount</th>--}}
-        {{--</tr>--}}
-        {{--<tr>--}}
-            {{--<td>{{$specific->id}}</td>--}}
-            {{--<td>{{$specific->student_number}}</td>--}}
-            {{--<td>{{$specific->date_of_payment}}</td>--}}
-            {{--<td>{{$specific->amount}}</td>--}}
-        {{--</tr>--}}
-    {{--</table>--}}
-{{--@endif--}}
-{{--<p><a href="/adminhomepage">Back</a></p>--}}
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <html>
     <head>
 
     </head>
     <body>
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Position</th>
-                <th>Status</th>
-            </tr>
+        <form id="deleteform" method="post" action="{{url('/deleteUser')}}">
+            {{ csrf_field() }}
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Position</th>
+                    <th>Status</th>
+                </tr>
                 @foreach($users as $userdata)
                     <tr>
                         <td>{{$userdata->id}}</td>
@@ -37,9 +22,16 @@
                         <td>{{$userdata->email}}</td>
                         <td>{{$userdata->position}}</td>
                         <td>{{$userdata->status}}</td>
+                        <td><button type="submit" name="action" value={{$userdata->id}}>DELETE</button></td>
                     </tr>
-            @endforeach
-        </table>
-        <p><a href="/adminhomepage">Back</a></p>
+                @endforeach
+            </table>
+        </form>
+        <form id="addform" method="post" action="{{url('/register')}}">
+            {{ csrf_field() }}
+            <label>Add new User</label>
+            <button type="submit">ADD</button>
+        </form>
+        <p><a href="/">Back</a></p>
     </body>
 </html>

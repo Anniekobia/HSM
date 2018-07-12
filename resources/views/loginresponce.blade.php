@@ -24,7 +24,6 @@
 
 </head>
 <body>
-
 <h1><b>Welcome To The Hospital Website</b></h1>
 
 <div class="container">
@@ -38,7 +37,6 @@
             <div style="padding-top:30px" class="panel-body" >
 
                 <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -48,6 +46,14 @@
                         </ul>
                     </div>
                 @endif
+                @if ($msg!=null)
+                    <div class="alert alert-danger">
+                        <ul>
+                            <li>{{ $msg }}</li>
+                        </ul>
+                    </div>
+                @endif
+
                 <form method="post" id="loginform" class="form-horizontal" action="{{url('/login')}}">
                     {{ csrf_field() }}
 

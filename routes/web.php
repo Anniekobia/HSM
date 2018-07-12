@@ -18,11 +18,17 @@ Route::get('/', function () {
 //Route::get('/loginform', function () {
 //    return view('login');
 //});
-Route::get('/adminhomepage', function () {
-    return view('admin');
-});
 Route::get('/doctorhomepage', function () {
     return view('doctor');
 });
+Route::post('adminhomepage', function () {
+    return view('adminusers');
+});
+Route::post('/register', function () {
+    return view('admin');
+});
+
 Route::get('/allUsers',  'UserController@selectAllUsers');
-Route::post('login',  'UserController@loginUser');
+Route::post('/login',  'UserController@loginUser');
+Route::post('/deleteUser','UserController@deleteUser');
+Route::post('/addUser',  'UserController@addUser');
