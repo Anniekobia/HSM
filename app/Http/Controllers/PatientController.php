@@ -13,8 +13,8 @@ class PatientController extends Controller
         //return $today;
         $appointments = Patient::all();
         foreach ($appointments as $dates) {
-            $dates->appointment;
-            return $dates;
+            $date=$dates->appointment;
+            return $date;
         }
 //        $appointmentdate=$appointments->appointment;
 //        return $appointmentdate;
