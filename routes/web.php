@@ -38,3 +38,5 @@ Route::post('/patientTreatment',  'PatientController@patientTreatment');
 Route::post('/searchPatient',  'PatientController@searchPatient');
 Route::post('/editPatient',  'PatientController@editPatient');
 Route::post('/postPatientEdit',  'PatientController@postPatientEdit');
+Route::get('/showAllAppointments',  'PatientController@showAllAppointments');
+Route::post('/addPatient',  'PatientController@addPatient');

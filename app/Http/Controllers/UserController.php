@@ -34,9 +34,9 @@ class UserController extends Controller
             }elseif($user->position=="Doctor"){
                 return redirect()->action('PatientController@showAppointments');
             }elseif ($user->position=="Nurse"){
-                return  'nurse';
+                //return redirect()->action('PatientController@showAppointments');
             }elseif ($user->position=="Receptionist"){
-                return 'receptionist';
+                return redirect()->action('PatientController@showAllAppointments');
             }
         }
     }
