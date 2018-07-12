@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PatientController;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -30,7 +32,7 @@ class UserController extends Controller
                 $users=$this->selectAllUsers();
                 return view('adminusers')->with('users',$users);
             }elseif($user->position=="Doctor"){
-                return 'doctor';
+                return \Redirect::route('/showAppointments');
             }elseif ($user->position=="Nurse"){
                 return  'nurse';
             }elseif ($user->position=="Receptionist"){

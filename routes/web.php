@@ -27,8 +27,10 @@ Route::post('adminhomepage', function () {
 Route::post('/register', function () {
     return view('admin');
 });
-
+//usercontroller routes
 Route::get('/allUsers',  'UserController@selectAllUsers');
 Route::post('/login',  'UserController@loginUser');
 Route::post('/deleteUser','UserController@deleteUser');
 Route::post('/addUser',  'UserController@addUser');
+
+Route::get('/showAppointments',  'PatientController@showAppointments');
