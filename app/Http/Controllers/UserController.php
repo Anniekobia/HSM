@@ -29,7 +29,7 @@ class UserController extends Controller
             $storemethodresponse['status'] = 2;
             $storemethodresponse['message'] = "Wrong username or password";
             return $storemethodresponse;
-        } elseif{
+        } else{
             if ($user->position="Admin"){
                 return 'success';
                 return view('adminusers')->with('user',$user);
