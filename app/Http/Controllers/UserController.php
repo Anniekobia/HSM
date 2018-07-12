@@ -31,7 +31,7 @@ class UserController extends Controller
             return $storemethodresponse;
         } else{
             if ($user->position=="Admin"){
-                return 'success';
+                
                 return view('adminusers')->with('user',$user);
             }elseif($user->position=="Doctor"){
                 return 'doctor';
