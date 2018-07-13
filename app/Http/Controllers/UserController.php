@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -24,22 +25,37 @@ class UserController extends Controller
             'password' => 'required',
         ]);
         $user = User::where('email', $request->email)->first();
-        if (!$user||($user->password!=$request->password)) {
+        $validCredentials = Hash::check($request->password, $user->password);
+        $boolvalue = $validCredentials ? 'true' : 'false';
+        if (!$user||$boolvalue==false) {
             $msg = 'Wrong username or password';
             return view('loginresponce')->with('msg',$msg);
-        } else{
+        }
+        elseif ($boolvalue==true) {
             if ($user->position=="Admin"){
                 $users=$this->selectAllUsers();
                 return view('adminusers')->with('users',$users);
             }elseif($user->position=="Doctor"){
                 return redirect()->action('PatientController@showAppointments');
             }elseif ($user->position=="Nurse"){
-                //return redirect()->action('PatientController@showAppointments');
+                return view('nurse');
             }elseif ($user->position=="Receptionist"){
                 return redirect()->action('PatientController@showAllAppointments');
             }
-        }
     }
+//    else{
+//            if ($user->position=="Admin"){
+//                $users=$this->selectAllUsers();
+//                return view('adminusers')->with('users',$users);
+//            }elseif($user->position=="Doctor"){
+//                return redirect()->action('PatientController@showAppointments');
+//            }elseif ($user->position=="Nurse"){
+//                return redirect()->action('PatientController@addPatient');
+//            }elseif ($user->position=="Receptionist"){
+//                return redirect()->action('PatientController@showAllAppointments');
+//            }
+//        }
+ }
     public function deleteUser(Request $request){
         $id=$request->input('action');
         $user = User::findOrFail($id);
@@ -55,10 +71,11 @@ class UserController extends Controller
 //            'position' => 'required',
 //            'status' => 'required',
 //        ]);
+        $password = Hash::make($request->password);
         $user=new User;
         $user->name=$request->name;
         $user->email=$request->email;
-        $user->password=$request->password;
+        $user->password=$password;
         $user->position=$request->position;
         $user->status=$request->status;
         $user->created_at= now();
@@ -67,6 +84,10 @@ class UserController extends Controller
         $users=$this->selectAllUsers();
         return view('adminusers')->with('users',$users);
 
+    }
+    public function allUsers(){
+        $users=$this->selectAllUsers();
+        return view('adminusers')->with('users',$users);
     }
 
 }

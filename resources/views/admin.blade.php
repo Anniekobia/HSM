@@ -30,7 +30,11 @@
 <body>
 <div class="container">
     <div class="row main">
-        <p><a href="/adminhomepage">Back</a></p>
+        {{--<p><a href="/allUsersBack">Back</a></p>--}}
+            <form method="post" action="{{url('/allUsersBack')}}">
+                {{ csrf_field() }}
+            <button type="submit" >Back</button>
+            </form>
         <div class="panel-heading">
             <div class="panel-title text-center">
                 <h1 class="title">Register new user</h1>

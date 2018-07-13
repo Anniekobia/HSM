@@ -30,7 +30,7 @@
 <body>
 <div class="container">
     <div class="row main">
-        <p><a href="/adminhomepage">Back</a></p>
+        <p><a href="/">Logout</a></p>
         <div class="panel-heading">
             <div class="panel-title text-center">
                 <h1 class="title">Record a new patient</h1>
@@ -48,9 +48,8 @@
         @endif
             <div class="input-group">
                 <ul>
-                    @foreach ($msg->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
+
+                        <li>{{ $msg }}</li>
                 </ul>
             </div>
         <div class="main-login main-center">
