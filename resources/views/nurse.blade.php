@@ -47,6 +47,7 @@
             </div>
         @endif
         <div class="main-login main-center">
+
             <form class="form-horizontal" method="post" action="{{url('/addPatient')}}">
                 {{ csrf_field() }}
                 <div class="form-group">
@@ -84,7 +85,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="symptoms"   placeholder="e.g. coughing"/>
+                            <textarea rows="4" class="form-control" name="symptoms"   placeholder="e.g. coughing"></textarea>
                         </div>
                     </div>
                 </div>
@@ -112,7 +113,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="allergies"  placeholder="e.g pollen grains"/>
+                            <textarea rows="4" class="form-control" name="allergies"  placeholder="e.g pollen grains"></textarea>
                         </div>
                     </div>
                 </div>

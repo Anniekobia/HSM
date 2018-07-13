@@ -22,9 +22,7 @@ class CreatePatientsTable extends Migration
             $table->string('temperature',100);
             $table->string('blood_pressure',100);
             $table->string('allergies',100);
-            $table->string('diagnosis',100);
-            $table->string('treatment',100);
-            $table->date('appointment');
+            $table->timestamp('created_at')->nullable();
         });
     }
 

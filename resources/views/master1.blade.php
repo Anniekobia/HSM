@@ -10,20 +10,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style type="text/css">
         body {
-            background-image: url('https://hdwallpaperim.com/wp-content/uploads/2017/08/24/103834-simple_background.jpg');
-            /*background-color: red;*/
-        }
+            background-image: url('https://www.byponto.com.br/wp-content/uploads/2017/07/background-clean1.jpg');
 
-        h1 {
-            color: #eeeeee;
-            text-align: center;
-            /*font-style: bold;*/
-            font-size: 50px;
         }
     </style>
 
 </head>
 <body>
-    @yield('content')
+@yield('content1')
 </body>
 </html>

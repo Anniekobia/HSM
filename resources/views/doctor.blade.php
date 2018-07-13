@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Doctors Page</title>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <style type="text/css">
-            h1 {
-                color: #000000;
-                text-align: center;
-                /*font-style: bold;*/
-                font-size: 50px;
-                text-decoration: underline;
-            }
-        </style>
-    </head>
-    <body>
+@extends('master1')
+@section('content1')
+@endsection
         <h1><b>Doctors Page</b></h1>
         <h2>Appointments</h2>
             <table class="table table-hover table-dark">
@@ -27,14 +10,14 @@
                     <th >Appointment Date</th>
                 </tr>
                 </thead>
-                @foreach($array as $dates)
-                    <tbody>
-                        <tr>
-                            <td>{{$dates->name}}</td>
-                            <td>{{$dates->appointment}}</td>
-                        </tr>
-                    </tbody>
-                @endforeach
+                {{--@foreach($array as $dates)--}}
+                    {{--<tbody>--}}
+                        {{--<tr>--}}
+                            {{--<td>{{$dates->name}}</td>--}}
+                            {{--<td>{{$dates->appointment}}</td>--}}
+                        {{--</tr>--}}
+                    {{--</tbody>--}}
+                {{--@endforeach--}}
             </table>
             <h5>Search Patient History:</h5>
                 <form class="form-inline" method="post" action="{{url('/searchPatient')}}">

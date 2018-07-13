@@ -56,15 +56,20 @@ class PatientController extends Controller
         return view('patientsearch')->with('patient',$patient);
     }
     public function addPatient(Request $request){
+//        $request->validate([
+//            'name' => 'required'
+//        ]);
         $patient = new Patient;
-        $patient->name=$request->name;
-        $patient->age=$request->age;
-        $patient->gender=$request->gender;
-        $patient->symptoms=$request->symptoms;
-        $patient->temperature=$request->temperature;
-        $patient->blood_pressure=$request->blood_pressure;
-        $patient->allergies=$request->allergies;
+        $patient->name = $request->name;
+        $patient->age = $request->age;
+        $patient->gender = $request->gender;
+        $patient->symptoms = $request->symptoms;
+        $patient->temperature = $request->temperature;
+        $patient->blood_pressure = $request->blood_pressure;
+        $patient->allergies = $request->allergies;
         $patient->save();
-        return view(patientadded)->with('msg','Patient Successfully added');
+
+        return view('patiendadded')->with('message','Patient Successfully added');
+
     }
 }

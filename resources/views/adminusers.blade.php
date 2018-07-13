@@ -1,53 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<html>
-<head>
+@extends('master1')
+@section('title')
+    Users
+@endsection
+@section('content1')
 
-</head>
-<body>
-<form id="deleteform" method="post" action="{{url('/deleteUser')}}">
-    {{ csrf_field() }}
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Position</th>
-            <th>Status</th>
-        </tr>
-        @foreach($users as $userdata)
+    <h3 class="text-center">users</h3>
+    <div class="container">
+        <table class="table">
+            <thead>
             <tr>
-                <td>{{$userdata->id}}</td>
-                <td>{{$userdata->name}}</td>
-                <td>{{$userdata->email}}</td>
-                <td>{{$userdata->position}}</td>
-                <td>{{$userdata->status}}</td>
-                <td>
-                    <button type="submit" name="action" value={{$userdata->id}}>DELETE</button>
-                </td>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Position</th>
+                <th>Status</th>
+                <th>Action</th>
             </tr>
-        @endforeach
-    </table>
-</form>
-<form id="addform" method="post" action="{{url('/register')}}" class="form-horizontal">
-    {{ csrf_field() }}
-    <label>Add new User</label>
-    <button type="submit">ADD</button>
-</form>
+            </thead>
+            <tbody>
+                @foreach($users as $userdata)
+                    <tr>
+                        <td>{{$userdata->id}}</td>
+                        <td>{{$userdata->name}}</td>
+                        <td>{{$userdata->email}}</td>
+                        <td>{{$userdata->position}}</td>
+                        <td>{{$userdata->status}}</td>
+                        <td>
+                            <form class="form-horizontal" action="{{url('/deleteUser')}}" method="post">
+                                {{ csrf_field() }}
+                                <button type="submit" name="action" class="btn btn-danger" value={{$userdata->id}}>Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-8"></div>
 
-<<<<<<< HEAD
-<form id="addform" method="post" action="{{url('logout')}}" class="form-horizontal">
-    {{ csrf_field() }}
-    <div class="form-group">
-        <button type="submit" name="logout" class="form-control btn btn-info">Logout</button>
+            <div class="col-md-2">
+                <form method="post" action="{{url('/register')}}" class="form-horizontal">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-success" >Add new user</button>
+                </form>
+            </div>
+            <div class="col-md-2">
+                <form id="addform" method="post" action="{{url('logout')}}" class="form-horizontal">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <button type="submit" name="logout" class=" btn btn-info">Logout</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
     </div>
-</form>
-=======
-        <form id="addform" method="post" action="{{url('/')}}">
-            {{ csrf_field() }}
-            <button><a href="/">Logout</a></button>
-        </form>
->>>>>>> 5a0295ed2c9b9039c2cabfc524edc1a6327a6562
 
-</body>
-</html>
+
+
+@endsection
+
+

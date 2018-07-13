@@ -45,9 +45,9 @@ class UserController extends Controller
                 } else if ($user->status == 1) {
                     //check role
                     if($user->position == "doctor"){
-                        return "doctor";
+                        return view('doctor');
                     }else if($user->position == "nurse"){
-                        return "nurse";
+                        return view('nurse');
                     }
 
                 }
