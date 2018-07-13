@@ -9,6 +9,7 @@ use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
+
 class UserController extends Controller
 {
     public function selectAllUsers()
@@ -25,9 +26,7 @@ class UserController extends Controller
             'password' => 'required',
         ]);
         $user = User::where('email', $request->email)->first();
-
-
-        //check if user exists
+        //check if user exist
         if ($user) {
             //check if password matches
             if (!Hash::check($request->password, $user->password)) {
@@ -48,13 +47,17 @@ class UserController extends Controller
                         return view('doctor');
                     }else if($user->position == "nurse"){
                         return view('nurse');
+                     }else if($user->position == 'receptionist'){
+                        return view('receptionist');
                     }
+                    }
+                }
 
                 }
             }
 
-        }
-    }
+
+
 
     public function changePassword(Request $request)
     {
@@ -74,9 +77,10 @@ class UserController extends Controller
 
     }
 
-    public function deleteUser(Request $request)
-    {
-        $id = $request->input('action');
+
+    public function deleteUser(Request $request){
+        $id=$request->input('action');
+
         $user = User::findOrFail($id);
         $user->delete();
         $users = $this->selectAllUsers();
@@ -89,6 +93,7 @@ class UserController extends Controller
 //            'name' => 'required'
 //        ]);
 
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -98,13 +103,16 @@ class UserController extends Controller
         $user->save();
 
         $users = User::all();
-
         return view('adminusers')->with('users', $users);
     }
 
     public function logout()
     {
         return view('login');
+    }
+    public function allUsers(){
+        $users=$this->selectAllUsers();
+        return view('adminusers')->with('users',$users);
     }
 
 

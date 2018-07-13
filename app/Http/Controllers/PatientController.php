@@ -70,6 +70,5 @@ class PatientController extends Controller
         $patient->save();
 
         return view('patiendadded')->with('message','Patient Successfully added');
-
-    }
+        }
 }
