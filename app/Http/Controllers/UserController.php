@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Patient;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,6 @@ class UserController extends Controller
                 $msg = 'Invalid login';
                 return view('login')->withErrors($msg);
             }
-
             if ($user->position == "admin") {
                 $users = $this->selectAllUsers();
                 return view('adminusers')->with('users', $users);
@@ -43,18 +43,39 @@ class UserController extends Controller
                     return view('change_password');
                 } else if ($user->status == 1) {
                     //check role
-                    if($user->position == "doctor"){
-                        return view('doctor');
-                    }else if($user->position == "nurse"){
+                    if ($user->position == "doctor") {
+                        $today = now()->toDateString();
+                        $appointments = Patient::all();
+                        $date = null;
+                        $array = [];
+                        foreach ($appointments as $dates) {
+                            $date = $dates->appointment;
+                            if ($date >= $today) {
+                                array_push($array, $dates);
+                            }
+                        }
+                        return view('doctor')->with('array', $array);
+                    } else if ($user->position == "nurse") {
                         return view('nurse');
-                     }else if($user->position == 'receptionist'){
-                        return view('receptionist');
+                    } else if ($user->position == 'receptionist') {
+                        $today = now()->toDateString();
+                        $appointments = Patient::all();
+                        $date = null;
+                        $array = [];
+                        foreach ($appointments as $dates) {
+                            $date = $dates->appointment;
+                            if ($date >= $today) {
+                                array_push($array, $dates);
+                            }
+                        }
+                        return view('receiptionist')->with('array', $array);
                     }
+                }
                     }
                 }
 
                 }
-            }
+
 
 
 
@@ -69,12 +90,17 @@ class UserController extends Controller
 //            return "Beatrice";
 //        }
         $user = User::where('email', $request->email)->first();
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->status = 1;
-        $user->save();
-        return view('login');
-
+        $passlength = strlen ($request->password);
+        if($passlength<6){
+            $msg = 'Password must be more than 6 characters';
+            return view('change_password')->withErrors($msg);
+        }else {
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->status = 1;
+            $user->save();
+            return view('login');
+        }
     }
 
 
@@ -114,7 +140,21 @@ class UserController extends Controller
         $users=$this->selectAllUsers();
         return view('adminusers')->with('users',$users);
     }
-
-
+    public function forgot_password(){
+        return view('forgot_password');
+    }
+    public function forgotPassword(Request $request){
+        $request->validate([
+            'email'=>'required'
+        ]);
+        $user = User::where('email',$request->email)->first();
+        if (!$user){
+            $msg='Email not registered';
+            return view('forgot_password')->withErrors($msg);
+        }
+        else{
+            return view('change_password');
+        }
+    }
 
 }

@@ -1,17 +1,13 @@
 @extends('master')
 @section('title')
-    Hospital Management system
+    Forgot password
 @endsection
 @section('content')
-    <h1><b>Change Password</b></h1>
+    <h1><b>Forgot password</b></h1>
 
     <div class="container">
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <div class="panel panel-info" >
-                <div class="panel-heading">
-                    <div class="panel-title">Change password</div>
-                    <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
-                </div>
 
                 <div style="padding-top:30px" class="panel-body" >
 
@@ -26,7 +22,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="post" id="loginform" class="form-horizontal" action="{{url('/change_password')}}">
+                    <form method="post" id="loginform" class="form-horizontal" action="{{url('/forgotPassword')}}">
                         {{ csrf_field() }}
 
                         <div style="margin-bottom: 25px" class="input-group">
@@ -34,20 +30,12 @@
                             <input id="login-email" type="email" class="form-control" name="email" value="" placeholder="Email">
                         </div>
 
-                        <div style="margin-bottom: 25px" class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
-                        </div>
 
-                        <div style="margin-bottom: 25px" class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="login-password" type="password" class="form-control" name="confirm_password" placeholder="confirm password">
-                        </div>
                         <div style="margin-top:10px" class="form-group">
                             <!-- Button -->
 
                             <div class="col-sm-12 controls">
-                                <button id="btn-login" class="btn btn-success" type="submit" name="Login">Change password</button>
+                                <button id="btn-login" class="btn btn-success" type="submit" name="Login">Next</button>
                             </div>
                         </div>
                     </form>

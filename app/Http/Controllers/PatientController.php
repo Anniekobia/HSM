@@ -67,8 +67,10 @@ class PatientController extends Controller
         $patient->temperature = $request->temperature;
         $patient->blood_pressure = $request->blood_pressure;
         $patient->allergies = $request->allergies;
+        $patient->created_at=now();
+        $patient->updated_at=now();
         $patient->save();
 
-        return view('patiendadded')->with('message','Patient Successfully added');
+        return view('patiendadded')->with('msg','Patient Successfully added');
         }
 }

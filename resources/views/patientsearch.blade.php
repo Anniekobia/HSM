@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+@extends('master1')
+@section('content1')
+@endsection
+        <!DOCTYPE html>
 <html lang="en">
 <html>
 <head>
@@ -7,7 +10,7 @@
 <body>
 <form id="deleteform" method="post" action="{{url('/editPatient')}}">
     {{ csrf_field() }}
-    <table>
+    <table class="table table-hover table-dark">
         <tr>
             <th>Name</th>
             <th>Age</th>

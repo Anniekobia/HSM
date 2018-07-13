@@ -42,6 +42,8 @@ Route::get('/showAppointments',  'PatientController@showAppointments');
 
 Route::post('/logout', 'UserController@logout' );
 Route::post('/change_password', 'UserController@changePassword' );
+Route::get('/forgot_password', 'UserController@forgot_password' );
+Route::post('/forgotPassword', 'UserController@forgotPassword' );
 Route::post('/patientTreatment',  'PatientController@patientTreatment');
 Route::post('/searchPatient',  'PatientController@searchPatient');
 Route::post('/editPatient',  'PatientController@editPatient');
